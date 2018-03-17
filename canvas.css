@@ -1,0 +1,53 @@
+html,body {
+  height: 100%;
+}
+#header {
+  text-align: center;
+  height: 50px
+}
+#header > p{
+  padding-bottom: 5px;
+  border-bottom: 1px solid #ccc;
+}
+
+#content {
+  position: relative;
+  display:flex;
+  justify-content: center;    
+  align-items:center;
+  width: 100%;
+  height: calc(100% - 150px);
+  padding-bottom: 50px;
+  box-sizing: border-box;
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%);
+  height: 100px;
+  text-align: center;
+  display:flex;
+  justify-content: center;    
+  align-items:center;
+  font-size: 0;
+}
+.image {
+  display: inline-block;
+}
+.image > img {
+  width: 40px;
+  height: 40px;
+}
+.content {
+  display: inline-block;
+  font-size: 10px;
+  text-align: left
+}
+.content > p{
+  margin: 0;
+  padding: 0;
+  height: 15px;
+  line-height: 15px;
+}

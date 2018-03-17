@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>canvas实现UI进度条</title>
+  <link rel="stylesheet" href="./canvas.css">
+</head>
+<body>
+  <div id="content">
+    <canvas id="canvas" height="200" width="200" style="background: #fff;"></canvas>
+  </div>
+
+<script type="text/javascript">
+	(function (){  
+			let canvas = document.getElementById('canvas'); 
+			let process = 0;  
+			let ctx = canvas.getContext('2d');  
+
+			// 画灰色的圆
+			ctx.beginPath();  
+			ctx.arc(100, 100, 80, 0, Math.PI*2);  
+			ctx.closePath();
+			ctx.fillStyle = '#ccc';
+			ctx.fill();  
+
+			function animate(){  
+				requestAnimationFrame(function (){  
+					process = process + 1;  
+					drawCricle(ctx, process);  
+					if (process < 100) {  
+						animate();  
+					}  
+				});  
+			}  
+
+			function drawCricle(ctx, percent){  
+					// 画进度环  
+					ctx.beginPath();  
+					ctx.moveTo(100, 100);    
+					ctx.arc(100, 100, 80, Math.PI * 1.5, Math.PI * (1.5 + 2 * percent / 100 ));  
+					ctx.closePath();  
+					ctx.fillStyle = '#0cf';  
+					ctx.fill();
+
+					// 画内填充圆  
+					ctx.beginPath();  
+					ctx.arc(100, 100, 75, 0, Math.PI * 2);  
+					ctx.closePath();  
+					ctx.fillStyle = '#fff';  
+					ctx.fill();  
+
+					// 填充文字    
+					ctx.fillStyle = '#0cf';  
+					ctx.textAlign = 'center';    
+					ctx.textBaseline = 'small';    
+					ctx.moveTo(100, 100);    
+					ctx.fillText('正在分析黑头数量'+ process + '%', 100, 100);  
+			}
+			animate();  
+	}());  
+</script>
+</body>
+</html>
