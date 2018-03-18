@@ -28,6 +28,7 @@
 function drawRing() {
 	var canvas=document.getElementById("canvas");
 	var ctx=canvas.getContext("2d");
+  ctx.translate(0.5,0.5)
 	ctx.beginPath();
 	ctx.arc(110,110,100,1.5*Math.PI,3.5*Math.PI,false);
 	ctx.lineWidth=10 ;
@@ -43,6 +44,7 @@ var percent=data/110*2*Math.PI;
 function drawPercent(){
 	var canvas=document.getElementById("canvas");
 	var ctx=canvas.getContext("2d");
+  ctx.translate(0.5,0.5)
 	ctx.beginPath();
 	ctx.arc(110,110,100,1.5*Math.PI,1.5*Math.PI+percent,false);
 	ctx.lineWidth=10 ;
